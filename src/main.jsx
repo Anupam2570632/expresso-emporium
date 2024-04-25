@@ -9,6 +9,8 @@ import {
 import Root from './components/Root';
 import Home from './components/Home';
 import AddCoffee from './components/AddCoffee';
+import CoffeeDetails from './components/CoffeeDetails';
+import UpdateCoffee from './components/UpdateCoffee';
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,16 @@ const router = createBrowserRouter([
       {
         path: '/addCoffee',
         element: <AddCoffee />
+      },
+      {
+        path:'/coffeeDetails/:id',
+        element: <CoffeeDetails/>,
+        loader:({params})=>fetch(`https://coffee-stroe-server.vercel.app/coffees/${params.id}`)
+      },
+      {
+        path:'/updateCoffee/:id',
+        element: <UpdateCoffee/>,
+        loader:({params})=>fetch(`https://coffee-stroe-server.vercel.app/coffees/${params.id}`)
       }
     ]
   },
